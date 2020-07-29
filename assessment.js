@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 const userNameInput = document.getElementById('user-name');
 const assessmentButton = document.getElementById('assessment');
 const resultDivided = document.getElementById('result-area');
@@ -16,7 +16,7 @@ function removeAllChildren(element) {
 }
 
 assessmentButton.onclick = () => {
-  const userName = userNameInput.value;
+  let userName = userNameInput.value;
   if (userName.length === 0) {
     // 名前が空の時は処理を終了する
     return;
@@ -50,6 +50,13 @@ assessmentButton.onclick = () => {
   const script = document.createElement('script');
   script.setAttribute('src', 'https://platform.twitter.com/widgets.js');
   tweetDivided.appendChild(script);
+};
+
+//入力欄でEnterキーを押したときに診断を実行
+userNameInput.onkeydown = event =>  {
+  if (event.key === 'Enter') {
+    assessmentButton.onclick();
+  }
 };
 
 const answers = [
